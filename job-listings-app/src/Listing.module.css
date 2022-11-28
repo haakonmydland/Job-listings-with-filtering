@@ -1,0 +1,102 @@
+:root {
+  /* colors */
+  --Desaturated-Dark-Cyan: hsl(180, 29%, 50%);
+
+  --Light-Grayish-Cyan-Background: hsl(180, 52%, 96%);
+  --Light-Grayish-Cyan-Tablets: hsl(180, 31%, 95%);
+  --Dark-Grayish-Cyan: hsl(180, 8%, 52%);
+  --Very-Dark-Grayish-Cyan: hsl(180, 14%, 20%);
+}
+
+.Container {
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.247);
+  border-radius: 0.5rem;
+  position: relative;
+  border-left: 5px solid var(--Desaturated-Dark-Cyan);
+  display: grid;
+  width: calc(100vw - 4rem);
+  max-width: 300px;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.Logo {
+  position: absolute;
+  left: 1rem;
+  transform: translateY(-50%);
+  height: 4rem;
+}
+
+.Content {
+  padding-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.TopInfo {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.Company {
+  color: var(--Desaturated-Dark-Cyan);
+}
+
+.Tags {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.New,
+.Featured {
+  border-radius: 100px;
+  color: White;
+  padding: 8px 10px 5px 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.New {
+  background-color: var(--Desaturated-Dark-Cyan);
+}
+
+.Featured {
+  background-color: var(--Very-Dark-Grayish-Cyan);
+}
+
+.Position {
+}
+
+.Info {
+  display: flex;
+  gap: 0.5rem;
+  color: var(--Dark-Grayish-Cyan);
+}
+
+.PostedAt {
+}
+
+.Contract {
+}
+
+.Location {
+}
+
+.Filters {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--Dark-Grayish-Cyan);
+}
+
+.Language,
+.Tool {
+  padding: 8px 10px 5px 10px;
+  border-radius: 3px;
+  background-color: var(--Light-Grayish-Cyan-Tablets);
+  color: var(--Desaturated-Dark-Cyan);
+  font-weight: 700;
+}
