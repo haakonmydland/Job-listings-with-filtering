@@ -20,14 +20,25 @@
   --Very-Dark-Grayish-Cyan: hsl(180, 14%, 20%);
 }
 
+.attribution {
+  font-size: 12px;
+  text-align: center;
+}
+.attribution a {
+  color: var(--Desaturated-Dark-Cyan);
+}
+
 body {
   margin: 0;
-  display: flex;
+  display: grid;
   justify-content: center;
+  justify-items: center;
   padding-top: 4rem;
   padding-bottom: 4rem;
-  min-height: 100vh;
+  min-height: calc(100vh - 8rem);
   background-color: var(--Light-Grayish-Cyan-Background);
+  grid-template-rows: max-content max-content;
+  gap: 2rem;
 }
 body::after {
   background-image: url("./assets/bg-header-mobile.svg");
@@ -58,5 +69,6 @@ p {
   }
   body {
     padding-top: 6rem;
+    min-height: calc(100vh - 10rem);
   }
 }
