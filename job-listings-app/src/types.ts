@@ -16,5 +16,11 @@ export interface ListingInterface {
 
 export interface ListingProps {
   data: any;
-  stateChanger: (string: string) => void;
+  stateChanger: any;
+}
+
+export interface RemoveFilter {
+  filters: any;
+  removeFilter: any;
+  clearFilters: any;
 }

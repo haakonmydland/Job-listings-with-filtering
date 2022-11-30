@@ -24,9 +24,21 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   min-height: 100vh;
   background-color: var(--Light-Grayish-Cyan-Background);
+}
+body::after {
+  background-image: url("./assets/bg-header-mobile.svg");
+  background-color: var(--Desaturated-Dark-Cyan);
+  background-repeat: repeat-x;
+  position: absolute;
+  height: 137px;
+  width: 100%;
+  content: "";
+  top: 0;
+  z-index: -1;
 }
 
 * {
@@ -37,4 +49,14 @@ h3,
 h4,
 p {
   margin: 0;
+}
+
+@media (min-width: 600px) {
+  body::after {
+    background-image: url("./assets/bg-header-desktop.svg");
+    height: 156px;
+  }
+  body {
+    padding-top: 6rem;
+  }
 }

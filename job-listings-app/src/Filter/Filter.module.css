@@ -1,0 +1,81 @@
+.Container {
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.247);
+  border-radius: 0.5rem;
+  position: relative;
+  display: grid;
+  width: calc(100vw - 4rem);
+  max-width: 300px;
+  gap: 1rem;
+  margin-top: 2rem;
+  grid-template-columns: 1fr max-content;
+  align-items: center;
+}
+
+.Clear {
+  font-weight: 700;
+  color: var(--Very-Dark-Grayish-Cyan);
+  cursor: pointer;
+}
+
+.Clear:hover {
+  color: var(--Desaturated-Dark-Cyan);
+  text-decoration: underline;
+}
+
+.Button {
+  height: 31px;
+  aspect-ratio: 1;
+  background-color: var(--Desaturated-Dark-Cyan);
+  border: none;
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+}
+
+.Button:hover {
+  background-color: var(--Very-Dark-Grayish-Cyan);
+}
+
+.Button::after,
+.Button::before {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  width: 60%;
+  height: 3px;
+  background-color: White;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.Button::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.ButtonText {
+  padding: 8px;
+}
+
+.ButtonWrapper {
+  border-radius: 3px;
+  background-color: var(--Light-Grayish-Cyan-Tablets);
+  color: var(--Desaturated-Dark-Cyan);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.Buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (min-width: 800px) {
+  .Container {
+    max-width: clamp(200px, 80vw, 1200px);
+    padding: 1.5rem 2rem;
+  }
+}

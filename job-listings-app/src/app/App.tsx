@@ -1,13 +1,14 @@
 import "./App.css";
-import { Listing } from "./Listing";
-import { useState, useCallback, useEffect } from "react";
-import data from "./assets/data.json";
+import { Listing } from "../Listing/Listing";
+import { useState, useEffect } from "react";
+import data from "../assets/data.json";
+import { Filter } from "../Filter/Filter";
 
 function App() {
   const [listings, setlistings] = useState(data);
   const [filters, setfilters] = useState([]);
 
-  const handleChange = (newValue: string) => {
+  const handleChange = (newValue: never) => {
     if (!filters.includes(newValue)) {
       setfilters((prev) => {
         return [...prev, newValue];
@@ -15,10 +16,20 @@ function App() {
     }
   };
 
+  const removeFilter = (filterRem: any) => {
+    setfilters((prev) => {
+      return prev.filter((filter) => filter !== filterRem.target.id);
+    });
+  };
+
+  const clearFilter = () => {
+    setfilters([]);
+  };
+
   useEffect(() => {
-    setlistings((prev: any) => {
+    setlistings((prev) => {
       let temp: Array<string> = [];
-      prev.forEach((element) => {
+      prev.forEach((element: any) => {
         element.filters = [...element.tools, ...element.languages];
         temp.push(element);
       });
@@ -28,15 +39,20 @@ function App() {
   }, [0]);
 
   return filters.length == 0 ? (
-    <div className="App">
+    <div className="AppNoFilter">
       {listings.map((listing: any) => (
         <Listing key={listing.id} data={listing} stateChanger={handleChange} />
       ))}
     </div>
   ) : (
     <div className="App">
+      <Filter
+        filters={filters}
+        removeFilter={removeFilter}
+        clearFilters={clearFilter}
+      ></Filter>
       {listings
-        .filter((listing) =>
+        .filter((listing: any) =>
           listing.filters.some((filter: string) => filters.includes(filter))
         )
         .map((listing: any) => (

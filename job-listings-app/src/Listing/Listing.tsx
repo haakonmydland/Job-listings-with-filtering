@@ -1,10 +1,15 @@
-import { JSXElementConstructor, useEffect } from "react";
 import style from "./Listing.module.css";
-import { ListingProps } from "./types";
+import { ListingProps } from "../types";
 
 export const Listing = ({ data, stateChanger }: ListingProps) => {
   return (
-    <div className={style.Container}>
+    <div
+      className={
+        data.featured
+          ? `${style.Container} ${style.FeaturedUtil}`
+          : style.Container
+      }
+    >
       <img className={style.Logo} src={data.logo} alt="" />
       <div className={style.Content}>
         <div className={style.TopInfo}>
