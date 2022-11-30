@@ -6,8 +6,8 @@ import { Filter } from "../Filter/Filter";
 import { ListingInterface } from "../types";
 
 function App() {
-  const [listings, setlistings] = useState(data);
-  const [filters, setfilters] = useState([]);
+  const [listings, setlistings] = useState<any | null>(data);
+  const [filters, setfilters] = useState<string[]>([]);
 
   const handleChange = (newValue: never) => {
     if (!filters.includes(newValue)) {
@@ -28,8 +28,8 @@ function App() {
   };
 
   useEffect(() => {
-    setlistings((prev: Array<string>) => {
-      let temp: Array<string> = [];
+    setlistings((prev: string[]) => {
+      let temp: string[] = [];
       prev.forEach((element: any) => {
         element.filters = [...element.tools, ...element.languages];
         temp.push(element);
@@ -54,7 +54,7 @@ function App() {
       ></Filter>
       {listings
         .filter((listing: ListingInterface) =>
-          listing?.filters?.some((filter: never) => filters.includes(filter))
+          listing?.filters?.some((filter: string) => filters.includes(filter))
         )
         .map((listing: ListingInterface) => (
           <Listing

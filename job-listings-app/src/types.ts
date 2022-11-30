@@ -10,9 +10,9 @@ export interface ListingInterface {
   postedAt: string;
   contract: string;
   location: string;
-  languages: Object;
-  tools: Object;
-  filters?: string;
+  languages: Array<string>;
+  tools: Array<string>;
+  filters?: Array<string>;
 }
 
 export interface ListingProps {
@@ -21,7 +21,7 @@ export interface ListingProps {
 }
 
 export interface RemoveFilter {
-  filters: any;
+  filters: Array<string>;
   removeFilter: any;
   clearFilters: any;
 }
