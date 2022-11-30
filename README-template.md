@@ -49,29 +49,80 @@ Users should be able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This project was one of the more involved ones from frontend Mentor I've worked on this far. I'm still working on learning React and this project felt like a perfect fit.
 
-To see how you can add code snippets, see below:
+I got to work a bit with states and state management, setting states from child components and a lot of list filtering.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
+I ended up using "useEffect" from react to change create a new property for the data items. It's just a mashup of tools and languages, to make it easier to filter based on them later on.
+
+```tsx
+useEffect(() => {
+  setlistings((prev: Array<string>) => {
+    let temp: Array<string> = [];
+    prev.forEach((element: any) => {
+      element.filters = [...element.tools, ...element.languages];
+      temp.push(element);
+    });
+
+    return [...temp];
+  });
+}, [0]);
 ```
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
+I'm still trying to understand typescript and types better, but I'm getting somewhere i think.
+
+This function is set up to loop through the job listings in the data and create a job listing element for each one. In addition to sending the job listing info to the element I also send a function to set a state.
+
+```tsx
+{
+  listings
+    .filter((listing: ListingInterface) =>
+      listing?.filters?.some((filter: never) => filters.includes(filter))
+    )
+    .map((listing: ListingInterface) => (
+      <Listing data={listing} key={listing.id} stateChanger={handleChange} />
+    ));
 }
 ```
 
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
+In the element I loop through the languages and tools to add buttons for the job listings. I then add a onclick function where I give the name of the tool or language as a argument.
+
+```tsx
+{
+  data.languages.map((lang: string) => (
+    <p
+      key={`${data.id} ${lang}`}
+      className={style.Language}
+      onClick={() => stateChanger(lang)}
+    >
+      {lang}
+    </p>
+  ));
+}
+{
+  data.tools.map((tool: string) => (
+    <p
+      key={`${data.id} ${tool}`}
+      className={style.Tool}
+      onClick={() => stateChanger(tool)}
+    >
+      {tool}
+    </p>
+  ));
+}
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+Back in the app the function executes with the argument and if that argument is not already added to the filters state, it gets added.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+```tsx
+const handleChange = (newValue: never) => {
+  if (!filters.includes(newValue)) {
+    setfilters((prev) => {
+      return [...prev, newValue];
+    });
+  }
+};
+```
 
 ## Author
 
