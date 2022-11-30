@@ -3,6 +3,7 @@ import { Listing } from "../Listing/Listing";
 import { useState, useEffect } from "react";
 import data from "../assets/data.json";
 import { Filter } from "../Filter/Filter";
+import { ListingInterface } from "../types";
 
 function App() {
   const [listings, setlistings] = useState(data);
@@ -18,7 +19,7 @@ function App() {
 
   const removeFilter = (filterRem: any) => {
     setfilters((prev) => {
-      return prev.filter((filter) => filter !== filterRem.target.id);
+      return prev.filter((filter) => filter !== filterRem?.target?.id);
     });
   };
 
@@ -27,7 +28,7 @@ function App() {
   };
 
   useEffect(() => {
-    setlistings((prev) => {
+    setlistings((prev: Array<string>) => {
       let temp: Array<string> = [];
       prev.forEach((element: any) => {
         element.filters = [...element.tools, ...element.languages];
@@ -40,7 +41,7 @@ function App() {
 
   return filters.length == 0 ? (
     <div className="AppNoFilter">
-      {listings.map((listing: any) => (
+      {listings.map((listing: ListingInterface) => (
         <Listing key={listing.id} data={listing} stateChanger={handleChange} />
       ))}
     </div>
@@ -52,10 +53,10 @@ function App() {
         clearFilters={clearFilter}
       ></Filter>
       {listings
-        .filter((listing: any) =>
-          listing.filters.some((filter: string) => filters.includes(filter))
+        .filter((listing: ListingInterface) =>
+          listing?.filters?.some((filter: never) => filters.includes(filter))
         )
-        .map((listing: any) => (
+        .map((listing: ListingInterface) => (
           <Listing
             data={listing}
             key={listing.id}

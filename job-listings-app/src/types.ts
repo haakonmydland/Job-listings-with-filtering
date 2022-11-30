@@ -12,10 +12,11 @@ export interface ListingInterface {
   location: string;
   languages: Object;
   tools: Object;
+  filters?: string;
 }
 
 export interface ListingProps {
-  data: any;
+  data: ListingInterface;
   stateChanger: any;
 }
 
