@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://www.frontendmentor.io/](https://www.frontendmentor.io/solutions/job-listings-with-filtering-react-typescript-iPHj_qPTtY)
+- Live Site URL: [https://job-listings-frontend-mentor.pages.dev/](https://job-listings-frontend-mentor.pages.dev/)
 
 ## My process
 
